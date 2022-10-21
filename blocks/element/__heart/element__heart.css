@@ -1,0 +1,12 @@
+.element__heart {
+  transition: all 1s;
+}
+
+.element__heart:hover {
+  opacity: 0.5;
+}
+
+.element__heart:active {
+  opacity: 1;
+  background-image: url(../../../images/Union.svg);
+}
