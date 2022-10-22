@@ -5,7 +5,9 @@
   margin-top: 10px;
   border-radius: 2px;
   transition: opacity 1s;
-
+  width: 100%;
+  border: 0;
+  padding: 0;
 }
 
 .popup__button-save:hover {
@@ -16,6 +18,8 @@
   .popup__button-save {
     font-size: 14px;
     line-height: 17px;
+    height: 46px;
+    margin-top: 8px;
   }
 }
 

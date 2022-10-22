@@ -1,8 +1,13 @@
 .profile__edit {
-  padding: 6px;
   border: 1px solid #FFF;
   margin-left: 18px;
   transition: opacity 1s;
+  background-color: #000;
+  background-image: url(../../../images/pensil.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
 }
 
 .profile__edit:hover {
@@ -11,8 +16,8 @@
 
 @media screen and (max-width: 1279px) {
   .profile__edit {
-    max-width: 7.5px;
-    padding: 4.25px;
+    width: 18px;
+    height: 18px;
     margin-left: 10px;
   }
 }

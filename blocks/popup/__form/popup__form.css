@@ -1,6 +1,6 @@
 .popup__form[type="text"] {
   border: 0;
-  max-width: 100%;
+  width: 100%;
   box-sizing: border-box;
   border-bottom: 1px solid #bcbcc4;
   padding-bottom: 13px;

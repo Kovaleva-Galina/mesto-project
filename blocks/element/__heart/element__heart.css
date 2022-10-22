@@ -1,5 +1,14 @@
 .element__heart {
+  background-image: url(../../../images/Heart.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  width: 22px;
+  height: 18px;
+  object-fit: contain;
+  border: 0;
   transition: all 1s;
+  padding: 0;
 }
 
 .element__heart:hover {
