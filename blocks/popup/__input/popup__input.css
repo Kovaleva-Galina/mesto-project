@@ -1,4 +1,4 @@
-.popup__form[type="text"] {
+.popup__input[type="text"] {
   border: 0;
   width: 100%;
   box-sizing: border-box;
@@ -8,13 +8,19 @@
   font-size: 14px;
   line-height: 17px;
   color: #000;
-  margin-bottom: 30px;
+  margin-bottom: 34px;
 }
 
-.popup__form::placeholder {
+.popup__input::placeholder {
   font-family: 'Inter', 'Arial', sans-serif;
 }
 
-.popup__form::-webkit-input-placeholder {
+.popup__input::-webkit-input-placeholder {
   font-family: 'Inter', 'Arial', sans-serif;
+}
+
+@media screen and (max-width: 1279px) {
+  .popup__input[type="text"] {
+    margin-bottom: 30px;
+  }
 }
