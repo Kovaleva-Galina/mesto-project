@@ -1,0 +1,10 @@
+.popup__image__container {
+  background-color: transparent;
+  padding: 0;
+  max-height: 540px;
+  object-fit: contain;
+  font-size: 12px;
+  line-height: 15px;
+  max-width: 75vw;
+  max-height: 75vh;
+}
