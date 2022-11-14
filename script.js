@@ -43,7 +43,7 @@ function handleFormSubmit(evt) {
   closeEditProfilePopup();
 }
 
-function addElement (name, link) {
+function addElement(name, link) {
   const elementsList = document.querySelector('.elements__list');
   elementsList.insertAdjacentHTML('afterbegin', `
     <li class="element">
@@ -65,17 +65,17 @@ function addElement (name, link) {
     evt.target.classList.toggle('element__heart_active');
   });
   const elementImage = element.querySelector('.element__image');
-  elementImage.addEventListener('click', function() {
+  elementImage.addEventListener('click', function () {
     popupImage.classList.add('popup_opened');
     const popupImageText = document.querySelector('.popup__image__text');
     const popupImagePhoto = document.querySelector('.popup__image__photo');
     popupImageText.textContent = name;
     popupImagePhoto.src = link;
   });
-  };
+};
 
 
-function addElementFromPopup (evt) {
+function addElementFromPopup(evt) {
   evt.preventDefault();
   const name = popupAddElement.querySelector('.popup__input__type_title');
   const link = popupAddElement.querySelector('.popup__input__type_link');
@@ -112,7 +112,7 @@ const initialCards = [
   }
 ];
 
-function addElementsAuto (initialCards) {
+function addElementsAuto(initialCards) {
   for (i = 0; i < initialCards.length; i++) {
     addElement(initialCards[i].name, initialCards[i].link);
   }
