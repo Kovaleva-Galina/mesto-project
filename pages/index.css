@@ -18,10 +18,12 @@
 @import url(../blocks/element/__heart/element__heart.css);
 @import url(../blocks/element/__urn/element__urn.css);
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__image/_type/popup__image_type_photo.css);
+@import url(../blocks/popup/_type/popup_type_image.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
-@import url(../blocks/popup/__image/__container/popup__image__container.css);
-@import url(../blocks/popup/__image/__photo/popup__image__photo.css);
+@import url(../blocks/popup/__container/_type/popup__container_type_image.css);
+@import url(../blocks/popup/__image/_type/popup__image_type_photo.css);
 @import url(../blocks/popup/__text/popup__text.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__button-save/popup__button-save.css);
