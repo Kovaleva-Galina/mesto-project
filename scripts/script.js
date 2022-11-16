@@ -84,24 +84,26 @@ function addElementsAuto(initialCards) {
 addElementsAuto(initialCards);
 
 buttonEditProfile.addEventListener('click', function () {
-  return openPopup(popupEditProfile);
+  openPopup(popupEditProfile);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileVocation.textContent;
 });
 
 buttonCloseEditProfile.addEventListener('click', function () {
-  return closePopup(popupEditProfile);
+  closePopup(popupEditProfile);
 });
 
 buttonAddElement.addEventListener('click', function () {
-  return openPopup(popupAddElement);
+  openPopup(popupAddElement);
 });
 
 buttonCloseAddElement.addEventListener('click', function () {
-  return closePopup(popupAddElement);
+  closePopup(popupAddElement);
 });
 
 formElementAddElement.addEventListener('submit', handleAddElement);
 formElementEditProfile.addEventListener('submit', handleEditProfile);
 
 buttonCloseImage.addEventListener('click', function () {
-  return closePopup(popupImage);
+  closePopup(popupImage);
 });
