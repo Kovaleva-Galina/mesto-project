@@ -1,0 +1,6 @@
+.form-field {
+  position: relative;
+  display: inline;
+  max-height: 32px;
+  max-width: 358px;
+}

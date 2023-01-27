@@ -1,6 +1,8 @@
 .profile__edit {
+  position: absolute;
+  bottom: 6px;
+  right: -38px;
   border: 1px solid #FFF;
-  margin-left: 18px;
   transition: opacity 1s;
   background-color: #000;
   background-image: url(../../../images/pensil.svg);
@@ -18,6 +20,6 @@
   .profile__edit {
     width: 18px;
     height: 18px;
-    margin-left: 10px;
+    right: -28px;
   }
 }
