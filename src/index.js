@@ -1,6 +1,6 @@
 import './pages/index.css';
 import { initialCards, handleAddElement, addElementsAuto} from './components/cards';
-import { openPopup, closePopup, closePopupsByClickOnSection, closePopupByEsc, initEditProfile, handleEditProfile } from './components/modal'
+import { openPopup, closePopup, closePopupsByClickOnSection, initEditProfile, handleEditProfile } from './components/modal'
 import { enableValidation } from './components/validate'
 
 // переменные редактирования профиля
@@ -28,6 +28,7 @@ buttonCloseImage.addEventListener('click', function () {
 
 buttonEditProfile.addEventListener('click', function () {
   openPopup(popupEditProfile);
+  initEditProfile();
 });
 
 buttonCloseEditProfile.addEventListener('click', function () {
@@ -43,8 +44,14 @@ buttonCloseAddElement.addEventListener('click', function () {
 });
 
 addElementsAuto(initialCards);
-closePopupByEsc();
 initEditProfile();
-enableValidation();
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button-save',
+  inactiveButtonClass: 'popup__button-save_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+});
 closePopupsByClickOnSection();
 

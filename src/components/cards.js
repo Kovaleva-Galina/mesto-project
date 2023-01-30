@@ -1,5 +1,14 @@
 import { closePopup, openPopup } from './modal';
 
+const cardTemplate = document.querySelector('#card-template');
+const popupImage = document.querySelector('.popup_type_image');
+const popupImageText = document.querySelector('.popup__image_type_text');
+const popupImagePhoto = document.querySelector('.popup__image_type_photo');
+const elementsList = document.querySelector('.elements__list');
+const popupAddElement = document.querySelector('.popup_type_add-element');
+const titleInput = popupAddElement.querySelector('.popup__input_type_title');
+const linkInput = popupAddElement.querySelector('.popup__input_type_link');
+
 export const initialCards = [
   {
     name: 'Архыз',
@@ -29,7 +38,6 @@ export const initialCards = [
 
 // создание карточек
 export function createCard(name, link) {
-  const cardTemplate = document.querySelector('#card-template');
   const cardTemplateContent = cardTemplate.content;
   const cardElement = cardTemplateContent.querySelector('.element').cloneNode(true);
   const elementImage = cardElement.querySelector('.element__image');
@@ -49,9 +57,6 @@ export function createCard(name, link) {
   });
 
   elementImage.addEventListener('click', function () {
-    const popupImage = document.querySelector('.popup_type_image');
-    const popupImageText = document.querySelector('.popup__image_type_text');
-    const popupImagePhoto = document.querySelector('.popup__image_type_photo');
     popupImageText.textContent = name;
     popupImagePhoto.src = link;
     popupImagePhoto.alt = name;
@@ -61,15 +66,11 @@ export function createCard(name, link) {
 };
 
 export function renderCard(name, link) {
-  const elementsList = document.querySelector('.elements__list');
   const element = createCard(name, link);
   elementsList.prepend(element);
 }
 
 export function handleAddElement(evt) {
-  const popupAddElement = document.querySelector('.popup_type_add-element');
-  const titleInput = popupAddElement.querySelector('.popup__input_type_title');
-  const linkInput = popupAddElement.querySelector('.popup__input_type_link');
   evt.preventDefault();
   renderCard(titleInput.value, linkInput.value);
   linkInput.value = '';
