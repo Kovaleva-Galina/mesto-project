@@ -1,0 +1,20 @@
+.avatar__edit {
+  position: absolute;
+  bottom: 0;
+  right:  0;
+  transition: opacity 1s;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-image: url(../../../images/pensil.svg);
+  background-size: 26px 26px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 120px;
+  height: 120px;
+  opacity: 0;
+  padding: 0;
+  border: 0;
+}
+
+.avatar__edit:hover {
+  opacity: 1;
+}
