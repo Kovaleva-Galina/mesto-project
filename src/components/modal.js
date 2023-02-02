@@ -1,8 +1,17 @@
+import { fetchEditProfile, fetchEditAvatar } from './api';
+
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
+const editProfileForm = document.forms.editProfile;
 const nameInput = popupEditProfile.querySelector('.popup__input_type_name');
 const jobInput = popupEditProfile.querySelector('.popup__input_type_job');
-const profileVocation = document.querySelector('.profile__vocation');
-const profileName = document.querySelector('.profile__name');
+
+const popupEditAvatar = document.querySelector('.popup_type_edit-avatar');
+const editAvatarForm = document.forms.editAvatar;
+const linkImageInput = popupEditAvatar.querySelector('.popup__input_type_link-image');
+
+export const avatar = document.querySelector('.avatar');
+export const profileVocation = document.querySelector('.profile__vocation');
+export const profileName = document.querySelector('.profile__name');
 
 export function closePopupByEsc(evt) {
   if (evt.key === 'Escape') {
@@ -39,9 +48,50 @@ export function initEditProfile() {
   jobInput.value = profileVocation.textContent;
 }
 
+export function initEditAvatar() {
+  linkImageInput.value = avatar.src;
+}
+
+export function renderLoading(isLoading, form) {
+  const saving = form.querySelector('.popup__button-save');
+  if(isLoading) {
+    saving.textContent = 'Сохранение...' ;
+  } else {
+    saving.textContent = 'Сохранить';
+  }
+}
+
 export function handleEditProfile(evt) {
   evt.preventDefault();
-  profileVocation.textContent = jobInput.value;
-  profileName.textContent = nameInput.value;
-  closePopup(popupEditProfile);
+  renderLoading(true, editProfileForm);
+  return fetchEditProfile(editProfileForm.elements.name.value, editProfileForm.elements.about.value)
+    .then((obj) => {
+      profileVocation.textContent = obj.name;
+      profileName.textContent = obj.about;
+      closePopup(popupEditProfile);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      renderLoading(false, editProfileForm);
+    })
 }
+
+export function handleEditAvatar(evt) {
+  evt.preventDefault();
+  renderLoading(true, editAvatarForm);
+  return fetchEditAvatar(editAvatarForm.elements.linkImage.value)
+  .then((obj) => {
+      avatar.src = obj.avatar;
+      closePopup(popupEditAvatar);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+  .finally(() => {
+    renderLoading(false, editAvatarForm);
+  })
+}
+
+
