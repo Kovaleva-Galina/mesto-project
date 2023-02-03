@@ -39,28 +39,36 @@ export const hasInvalidInputs = (inputList) => {
 }
 
 // функция изменения активности кнопки "Сохранить"
-export const toggleButtonState = (inputList, buttonElement, setting) => {
+export const validateSaveButton = (formElement, settings) => {
+  const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
+  const buttonElement = formElement.querySelector(settings.submitButtonSelector);
   if (hasInvalidInputs(inputList)) {
     // сделай кнопку неактивной
     buttonElement.disabled = true;
-    buttonElement.classList.add(setting.inactiveButtonClass);
+    buttonElement.classList.add(settings.inactiveButtonClass);
   } else {
     // иначе сделай кнопку активной
     buttonElement.disabled = false;
-    buttonElement.classList.remove(setting.inactiveButtonClass);
+    buttonElement.classList.remove(settings.inactiveButtonClass);
   }
 }
 
 // функция проверки на валидность всех полей каждый клик
 export const setEventListeners = (formElement, settings) => {
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
-  const buttonSave = formElement.querySelector(settings.submitButtonSelector);
-  toggleButtonState(inputList, buttonSave, settings);
+  validateSaveButton(formElement, settings);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement, settings);
-      toggleButtonState(inputList, buttonSave, settings);
+      validateSaveButton(formElement, settings);
     });
+  });
+}
+
+export const validateInputs = (formElement, settings) => {
+  const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
+  inputList.forEach((inputElement) => {
+    checkInputValidity(formElement, inputElement, settings);
   });
 }
 
@@ -70,9 +78,7 @@ export const enableValidation = (settings) => {
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
-      const buttonSave = formElement.querySelector(settings.submitButtonSelector);
-      toggleButtonState(inputList, buttonSave, settings);
+      validateSaveButton(formElement, settings);
     });
     setEventListeners(formElement, settings);
   });
