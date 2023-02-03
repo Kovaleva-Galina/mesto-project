@@ -1,15 +1,16 @@
 import { closePopup, openPopup, renderLoading } from './modal';
 import { fetchElement, fetchDelete, putLike, deleteLike } from './api';
-
-const cardTemplate = document.querySelector('#card-template');
-const popupImage = document.querySelector('.popup_type_image');
-const popupImageText = document.querySelector('.popup__image_type_text');
-const popupImagePhoto = document.querySelector('.popup__image_type_photo');
-const elementsList = document.querySelector('.elements__list');
-const popupAddElement = document.querySelector('.popup_type_add-element');
-const addCardForm = document.forms.addCard;
-const titleInput = popupAddElement.querySelector('.popup__input_type_title');
-const linkInput = popupAddElement.querySelector('.popup__input_type_link');
+import {
+  cardTemplate,
+  popupImage,
+  popupImageText,
+  popupImagePhoto,
+  elementsList,
+  popupAddElement,
+  addCardForm,
+  addCardSave,
+  titleInput,
+  linkInput } from './config';
 
 // создание карточек
 export function createCard(props) {
@@ -70,7 +71,7 @@ export function createCard(props) {
     popupImageText.textContent = name;
     popupImagePhoto.src = link;
     popupImagePhoto.alt = name;
-    return openPopup(popupImage);
+    openPopup(popupImage);
   });
 
   return cardElement;
@@ -83,7 +84,7 @@ export function renderCard(props) {
 
 export function handleAddElement(evt) {
   evt.preventDefault();
-  renderLoading(true, addCardForm);
+  renderLoading(true, addCardSave);
   fetchElement(addCardForm.elements.name.value, addCardForm.elements.link.value)
   .then((obj) => {
     renderCard({
@@ -93,16 +94,14 @@ export function handleAddElement(evt) {
       showUrn: true,
       cardId: obj._id
     });
-    linkInput.value = '';
-    titleInput.value = '';
     closePopup(popupAddElement);
-    return obj;
+    addCardForm.reset();
   })
   .catch((err) => {
     console.log(err);
   })
   .finally(() => {
-    renderLoading(false, addCardForm);
+    renderLoading(false, addCardSave);
   })
 }
 
