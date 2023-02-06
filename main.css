@@ -4,7 +4,9 @@
 .header{border-bottom:1px solid rgba(84,84,84,.7);margin:0 auto 40px;max-width:880px;min-height:74px}@media screen and (max-width:1279px){.header{margin-bottom:42px}}
 .header__logo{max-height:33px;max-width:142px;padding-bottom:37px;padding-top:43px}@media screen and (max-width:1279px){.header__logo{max-height:24px;max-width:103px;padding-bottom:26px;padding-left:27px;padding-top:28px}}
 .profile{align-items:center;display:grid;gap:30px;grid-template-columns:min-content 1fr min-content;grid-template-rows:1fr;justify-items:start;margin:0 auto 51px;max-width:880px;padding-left:19px;padding-right:19px}@media screen and (max-width:1279px){.profile{gap:26px;grid-template-columns:1fr;justify-items:center;margin-bottom:36px}}
-.profile__avatar{border-radius:50%;height:120px;-o-object-fit:cover;object-fit:cover;width:120px}
+.profile__avatar{border-radius:50%;height:120px;-o-object-fit:cover;object-fit:cover;position:relative;width:120px}
+.avatar__edit{background-color:rgba(0,0,0,.8);background-image:url(6c7bf05444b9793fdf6e.svg);background-position:50%;background-repeat:no-repeat;background-size:26px 26px;border:0;bottom:0;height:120px;opacity:0;padding:0;position:absolute;right:0;transition:opacity 1s;width:120px}.avatar__edit:hover{opacity:1}
+.avatar{border-radius:50%;height:120px;-o-object-fit:cover;object-fit:cover;width:120px}
 .profile__name-section{position:relative}
 .profile__name{font-size:42px;font-weight:500;justify-content:end;line-height:48px;margin:0;padding-top:5px}@media screen and (max-width:1279px){.profile__name{font-size:27px;line-height:33px;padding-top:0;text-align:center}}
 .profile__edit{background-color:#000;background-image:url(6c7bf05444b9793fdf6e.svg);background-position:50%;background-repeat:no-repeat;border:1px solid #fff;bottom:6px;height:24px;position:absolute;right:-38px;transition:opacity 1s;width:24px}.profile__edit:hover{opacity:.6}@media screen and (max-width:1279px){.profile__edit{height:18px;right:-28px;width:18px}}
@@ -12,12 +14,15 @@
 .profile__add-button{background-color:#000;background-image:url(bed8c136e13907f5eefb.svg);background-position:50%;background-repeat:no-repeat;border:1px solid #fff;border-radius:2px;height:50px;justify-items:end;padding:13px 63px;transition:opacity 1s;width:150px}.profile__add-button:hover{opacity:.6}@media screen and (max-width:1279px){.profile__add-button{margin-top:6px;width:100%}}
 .elements{line-height:0;margin:0 auto 29px;max-width:880px}
 .elements__list{display:grid;gap:20px 17px;grid-template-columns:repeat(auto-fit,minmax(282px,max-content));justify-content:center;margin:0;padding:0}
-.element{background-color:#fff;border-radius:10px;justify-content:center;list-style:none;max-height:361px;max-width:282px;position:relative}
+.element{background-color:#fff;border-radius:10px;display:flex;flex-direction:column;justify-content:center;list-style:none;max-height:361px;max-width:282px;position:relative}
 .element__image{aspect-ratio:1;border-radius:10px 10px 0 0;-o-object-fit:fill;object-fit:fill;width:282px}
 .element__description{align-items:center;background-color:#fff;border-radius:10px;color:#000;display:flex;justify-content:space-between;min-height:79px;padding-left:21px;padding-right:15px}
+.element__like{align-items:center;display:flex;flex-direction:column;gap:12px;height:100%;justify-content:center}
+.element__counter{align-items:center;margin:0;min-height:13px;text-align:center}
 .element__text{font-size:24px;font-weight:900;line-height:29px;margin:0;max-width:198px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .element__heart{background-color:#fff;background-image:url(1ad06e85f169668a1f36.svg);background-position:50%;background-repeat:no-repeat;border:0;height:18px;-o-object-fit:contain;object-fit:contain;padding:0;transition:all 1s;width:22px}.element__heart:hover{opacity:.5}.element__heart_active{background-image:url(35948469632d0421d697.svg);opacity:1}
-.element__urn{background-color:transparent;background-image:url(e3c42771bff3aaa52f76.svg);border:0;height:19px;-o-object-fit:contain;object-fit:contain;padding:0;position:absolute;right:20px;top:20px;transition:opacity 1s;width:18px}.element__urn:hover{opacity:.6}
+.element__urn{background-color:transparent;background-image:url(e3c42771bff3aaa52f76.svg);border:0;display:none;height:19px;-o-object-fit:contain;object-fit:contain;padding:0;position:absolute;right:20px;top:20px;transition:opacity 1s;width:18px}.element__urn:hover{opacity:.6}
+.element__urn_active{display:block}
 .popup{background-color:rgba(0,0,0,.5);bottom:0;display:flex;left:0;opacity:0;position:fixed;right:0;top:0;transition:visibility .5s linear,opacity .5s linear;visibility:hidden}
 .popup_type_image{background-color:rgba(0,0,0,.9)}
 .popup_opened{opacity:1;visibility:visible}
@@ -29,7 +34,7 @@
 .popup__input_type_error{border-bottom-color:red}
 .popup__input-error{min-width:358px;position:absolute;top:36px}
 .popup__input-error_active{color:red;font-size:12px;font-weight:400;line-height:15px}
-.popup__button-save{background-color:#000;border:0;border-radius:2px;color:#fff;height:50px;margin-top:10px;padding:0;transition:opacity 1s;width:100%}.popup__button-save:hover{opacity:.8}@media screen and (max-width:1279px){.popup__button-save{font-size:14px;height:46px;line-height:17px;margin-top:4px}}
+.popup__button-save{background-color:#000;border:0;border-radius:2px;color:#fff;height:50px;margin-top:10px;min-width:358px;padding:0;transition:opacity 1s;width:100%}.popup__button-save:hover{opacity:.8}@media screen and (max-width:1279px){.popup__button-save{font-size:14px;height:46px;line-height:17px;margin-top:4px}}
 .popup__button-save_disabled{background-color:#fff;border:2px solid #000;color:#000;opacity:.2}
 .popup__close{background:url(039f1f5203f653b4bacd.svg) 50% no-repeat;border:0;height:32px;position:absolute;right:-40px;top:-40px;transition:opacity 1s;width:32px}.popup__close:hover{opacity:.6}@media screen and (max-width:1179px){.popup__close{height:20px;right:0;top:-36px;width:20px}}
 .footer__copyright{color:#545454;margin:auto;max-width:880px;padding-bottom:60px;padding-top:38px}@media screen and (max-width:1279px){.footer__copyright{font-size:14px;line-height:17px;padding-left:20px;padding-top:19px}}
