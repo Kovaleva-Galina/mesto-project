@@ -1,4 +1,4 @@
-.popup__input[type="text"] {
+.popup__input {
   border: 0;
   width: 100%;
   box-sizing: border-box;
@@ -34,7 +34,7 @@
 }
 
 @media screen and (max-width: 1279px) {
-  .popup__input[type="text"] {
+  .popup__input {
     margin-bottom: 34px;
   }
 }
